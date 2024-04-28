@@ -22,7 +22,8 @@ function Register() {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
-
+      
+      
     try {
       const res = await apiRequest.post("/auth/signup", {
         username,
@@ -30,9 +31,11 @@ function Register() {
         password,
       });
 
+      console.log(res.data);
+      
+
       if(res.data){
-        dispatch(userSignup(res.data))
-        localStorage.setItem('userData', JSON.stringify(res.data));
+        dispatch(userSignup(res.data.user))
             navigate("/");
       }
 

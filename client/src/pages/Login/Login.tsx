@@ -34,18 +34,15 @@ function Login() {
 
       const user = await apiRequest.post("/auth/getSingleUser", { email });
 
-      console.log(user)
-
-
-      // updateUser(res.data)
+      console.log(user.data)
+      
      if(res.data){
       dispatch(userSignIn(user.data))
-      localStorage.setItem('userData', JSON.stringify(user.data));
-      navigate("/");
+        navigate("/");
      }
     
-    } catch (err:any) {
-      setError(err.response.data.message);
+    } catch (err) {
+      setError(err?.response?.data?.message);
     } finally {
       setIsLoading(false);
     }

@@ -5,8 +5,9 @@ import Home from "./pages/HomePage/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import SinglePage from "./pages/singlePage/SinglePage";
-import {Layout} from "./pages/Layout/Layout";
+import {Layout, RequireAuth} from "./pages/Layout/Layout";
 import Profile from "./pages/ProfilePage/Profile";
+import ProfileUpdatePage from "./pages/ProfileUpdatePage/ProfileUpdatePage";
 
 
 function App() {
@@ -30,11 +31,6 @@ function App() {
           // loader: singlePageLoader,
         },
         {
-          path:"/profile",
-          element:<Profile/>
-        },
-
-        {
           path: "/login",
           element: <Login/>,
         },
@@ -46,16 +42,16 @@ function App() {
     },
     {
       path: "/",
-      // element: <RequireAuth />,
+       element: <RequireAuth />,
       children: [
         {
-          // path: "/profile",
-          // element: <Profile />,
+          path: "/profile",
+          element: <Profile />,
           // loader: profilePageLoader
         },
         {
           path: "/profile/update",
-          // element: <ProfileUpdatePage />,
+           element: <ProfileUpdatePage/>,
         },
         {
           path: "/add",

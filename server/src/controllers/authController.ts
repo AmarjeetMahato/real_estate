@@ -140,3 +140,5 @@ export const logout = async (req:Request, res:Response) => {
           console.log(error);
        }
 }
+
+

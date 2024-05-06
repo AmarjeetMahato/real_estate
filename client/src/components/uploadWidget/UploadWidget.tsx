@@ -7,7 +7,8 @@ const CloudinaryScriptContext = createContext<{ loaded: boolean }>({ loaded: fal
 
 declare global {
   interface Window {
-    cloudinary: any; // Adjust the type if you have specific typings for Cloudinary
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    cloudinary: any ; 
   }
 }
 
@@ -27,7 +28,7 @@ interface UploadWidgetProps {
 
 
 
-function UploadWidget({ uwConfig, setPublicId, setAvatar}:UploadWidgetProps) {
+function UploadWidget({ uwConfig, setAvatar}:UploadWidgetProps) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

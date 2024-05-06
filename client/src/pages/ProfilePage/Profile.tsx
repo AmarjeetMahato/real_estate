@@ -45,7 +45,7 @@ const Profile = () => {
                     </div>
 
                     <div className="info">
-                       <span>Avatar <img src={CurrentUser.avatar?.[0] || "/noavatar.jpg"} alt="" /></span>
+                       <span>Avatar <img src={CurrentUser.avatar || "/noavatar.jpg"} alt="" /></span>
                        <span>Username: <b>{CurrentUser.username}</b></span>
                        <span>Email: {CurrentUser.email}</span>
                        <button onClick={logoutUser}>Logout</button>

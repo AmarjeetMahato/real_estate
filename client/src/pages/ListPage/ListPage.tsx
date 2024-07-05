@@ -1,15 +1,16 @@
-import { Suspense } from 'react'
+
 import Filter from '../../components/Filter/Filter'
 import { listData } from '../../lib/dummydata'
 import Card from '../../components/Card/Card'
 import Map from '../../components/Map/Map';
-import { Await, useLoaderData } from "react-router-dom";
-import { types } from '../../vite-env';
+import {  useLoaderData } from "react-router-dom";
+import { Post, types } from '../../vite-env';
 import "./listPage.scss"
 
 const ListPage = () => {
     const data : types[] = listData
     // const data = useLoaderData();
+      const post = useLoaderData() as Post[]
 
   return (
     <div className="listPage">
@@ -17,7 +18,7 @@ const ListPage = () => {
         <div className="wrapper">
           <Filter />
 
-              {data.map((post:types) => (
+              {post && post?.map((post) => (
                   <Card key={post.id} item={post} />
                 ))
               }
@@ -26,9 +27,7 @@ const ListPage = () => {
 
 
       <div className="mapContainer">
-        
          <Map item={data} />
-
       </div>
     </div>
   )

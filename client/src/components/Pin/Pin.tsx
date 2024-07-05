@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Marker, Popup } from 'react-leaflet'
 import { types } from '../../vite-env'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import "./pin.scss"
 
 const Pin = ({item}:{item:types}) => {
   return (
-    <Marker position={[item.latitude, item.longitude]}>
+    <Marker position={[parseFloat(item.latitude.toString()), parseFloat(item.longitude.toString())]}>
     <Popup>
         <div className="popupContainer">
           <img src={item.images[0]} alt="" />

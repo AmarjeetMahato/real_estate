@@ -8,6 +8,8 @@ import SinglePage from "./pages/singlePage/SinglePage";
 import {Layout, RequireAuth} from "./pages/Layout/Layout";
 import Profile from "./pages/ProfilePage/Profile";
 import ProfileUpdatePage from "./pages/ProfileUpdatePage/ProfileUpdatePage";
+import NewPostPage from "./pages/NewPostPage/NewPostPage";
+import { listPageLoader, singlePageLoader } from "./lib/loader";
 
 
 function App() {
@@ -23,12 +25,12 @@ function App() {
         {
           path: "/list",
           element: <ListPage />,
-          // loader: listPageLoader,
+           loader: listPageLoader,
         },
         {
           path: "/:id",
           element: <SinglePage/>,
-          // loader: singlePageLoader,
+          loader: singlePageLoader,
         },
         {
           path: "/login",
@@ -54,8 +56,8 @@ function App() {
            element: <ProfileUpdatePage/>,
         },
         {
-          path: "/add",
-          // element: <NewPostPage />,
+          path: "/create-post",
+          element: <NewPostPage/>,
         },
       ],
     },

@@ -1,19 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import "./card.scss"
-interface types{
-    id: number;
-    title: string;
-    images: string[];
-    bedroom: number;
-    bathroom: number;
-    price: number;
-    address: string;
-    latitude: number;
-    longitude: number;
-}
+import { Post } from '../../vite-env';
 
-const Card = ({item}:{item:types}) => {
+
+
+const Card = ({item}:{item:Post}) => {
     //  console.log(item)
   return (
    <div className="card">

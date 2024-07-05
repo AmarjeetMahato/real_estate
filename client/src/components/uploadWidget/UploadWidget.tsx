@@ -22,8 +22,8 @@ interface UploadConfig {
 
 interface UploadWidgetProps {
   uwConfig: UploadConfig;
-  setPublicId?: (publicId: string) => void;
-  setAvatar: React.Dispatch<string[]>;
+  setPublicId?: (publicId: string) => void; // Corrected typing
+  setAvatar: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 
@@ -57,11 +57,27 @@ function UploadWidget({ uwConfig, setAvatar}:UploadWidgetProps) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error: unknown, result: any) => { // Adjust the types based on Cloudinary's documentation
           if (!error && result && result.event === "success") {
-            console.log("Done! Here is the image info: ", result.info);
-            setAvatar(result.info.secure_url);
+            console.log("Done! Here is the image info: ", result.info); // Update setAvatar
+            setAvatar(prevState => [...prevState, result.info.secure_url]);
           }
         }
       );
+
+      // let myWidget = window.cloudinary.createUploadWidget(uwConfig, {
+      //   // Event listener for file validation before upload
+      //   fileuploadbefore: (event: Event) => {
+      //     const target = event.target as HTMLInputElement;
+      //     const files = target.files;
+      //     if (files && files.length > 0) {
+      //       const file = files[0];
+      //       if (file.size > 500 * 1024) {
+      //         alert("File size exceeds 500 KB");
+      //         event.preventDefault(); // Prevent the file from being uploaded
+      //       }
+      //     }
+      //   },
+      // });
+      
 
       const uploadWidgetButton = document.getElementById("upload_widget");
 if (uploadWidgetButton) {

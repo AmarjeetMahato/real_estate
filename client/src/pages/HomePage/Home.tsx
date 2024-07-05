@@ -1,10 +1,22 @@
 
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./home.scss";
+import { AppDispatch, RootState } from "../../store/reducer";
+import { fetchStoreAsyncThunk } from "../../store/reducer/postReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Home = () => {
   
-     
+  const estate = useSelector((state:RootState) => state.estate);
+
+  console.log("estate",estate);
+  
+const dispatch = useDispatch<AppDispatch>()
+
+useEffect(()=>{
+     dispatch(fetchStoreAsyncThunk())
+},[dispatch])
     return (
         <div className="homePage">
         <div className="textContainer">

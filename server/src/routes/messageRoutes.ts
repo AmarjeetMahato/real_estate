@@ -1,14 +1,10 @@
 import { Router } from "express";
-import { SignUp, logout, signIn } from "../controllers/authController";
+import { verifyToken } from "../middleware/verifyToken";
+import { addMessage } from "../controllers/messageController";
 
 
 const router  = Router();
 
-
-
-router.post(`/signup`,SignUp)
-router.post(`/signin`,signIn)
-router.post(`/logout`,logout)
-
+router.post("/:chatId",verifyToken, addMessage)
 
 export default router
